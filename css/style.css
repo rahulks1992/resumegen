@@ -1,0 +1,10 @@
+body{
+	background: #cfadbe;
+}
+.title{
+	text-align: center;
+	font-weight: 700;
+}
+#left .moduleform{
+	display: none;
+}
