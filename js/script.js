@@ -26,30 +26,4 @@ angular.module('Resumegen', [])
 		})
 		moduletemplate.appendTo($('#right'))
 	}
-	var config = {
-		url : '/api/authenticate',
-		method: 'GET',
-		params: {
-		}
-	},
-	successCallback = function(d) {
-		if(d.data) {
-			sessionStorage.setItem('loggedIn', true);
-			sessionStorage.setItem('userId', $scope.inputId);
-			// $location.path('/home.html#/list');
-			window.location.href = 'home.html#/list';
-		}
-	},
-	errorCallback = function(d) {
-		console.error('Error: '+d);       			
-	};
-
-	$scope.loginSubmit = function(){
-		if( $scope.inputId && $scope.inputPassword ) {
-			config.params.user_id = $scope.inputId;
-			config.params.pwd = $scope.inputPassword;
-
-			$http(config).then(successCallback,errorCallback)
-		}
-	};
 }]);
