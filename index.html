@@ -13,11 +13,7 @@
 	<div id="left" class="col-md-4">
 		<div id="module1">
 			<h1>Module One Bio</h1>
-			<div class="moduletemplate">
-				<div>{{module1.defaults.heading}}</div>
-				<div>{{module1.defaults.subheading}}</div>
-				<div>{{module1.defaults.description}}</div>
-			</div>
+			<module1 info="module1.defaults"></module1>
 			<div class="moduleform">
 				<form>
 					<input type="text" ng-model="module1.defaults.heading">

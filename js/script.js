@@ -1,5 +1,14 @@
-angular.module('Resumegen', [])    
-.controller('moduleslist', ['$scope', '$http', function( $scope, $http ){
+angular.module('Resumegen', [])
+.directive('module1', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      templateno: '=info'
+    },
+    templateUrl: 'module1.html'
+  };
+})    
+.controller('moduleslist', ['$scope', '$http', '$compile', function( $scope, $http , $compile){
 	$scope.module1 = {
 		defaults:{
 			heading : "John Doe",
@@ -8,22 +17,18 @@ angular.module('Resumegen', [])
 		}
 	};
 	$scope.addModule = function(whichmodule){
-		var randomnumber = 10, newmodel = Math.floor(Math.random()*1000000);
+		var newmodel = Math.floor(Math.random()*1000000), newmodelis;
 		var form = $('#'+ whichmodule).find('.moduleform').clone(true, true);
 		form.find('input').each(function(i,v){
 			var modelis = $(v).attr('ng-model'),
 			newmodelis = 'defaults' + newmodel,
 			finalmodel = modelis.replace('defaults', newmodelis) ;
-			$(v).attr('ng-model', finalmodel)
+			$(v).attr('ng-model', finalmodel);
 		})
 		form.appendTo($('#center'));
-		var moduletemplate = $('#'+ whichmodule).find('.moduletemplate').clone(true, true);
-		moduletemplate.find('div').each(function(i,v){
-			var modelis = $(v).html(),
-			newmodelis = 'defaults' + newmodel,
-			finalmodel = modelis.replace('defaults', newmodelis) ;
-			$(v).html(finalmodel)
-		})
-		moduletemplate.appendTo($('#right'))
+
+		var moduletemplate = $compile(  "<module1 info='module1.defaults'></module1>" )( $scope );
+		console.log(moduletemplate);
+		$('#right').append(moduletemplate)
 	}
 }]);
