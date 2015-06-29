@@ -18,22 +18,10 @@ angular.module('Resumegen', [])
   };
 })
 .directive('module2', function() {
-  return {
-    restrict: 'E',
-    scope: {
-      templateno: '=info'
-    },
-    templateUrl: '/partials/module2.html'
-  };
+  return { restrict: 'E', scope: {templateno: '=info'}, templateUrl: '/partials/module2.html'};
 })
 .directive('module2form', function() {
-  return {
-    restrict: 'E',
-    scope: {
-      model:'='
-    },
-    templateUrl: '/partials/module2form.html'
-  };
+  return { restrict: 'E', scope: { model:'='}, templateUrl: '/partials/module2form.html'};
 })   
 .controller('moduleslist', ['$scope', '$http', '$compile', function( $scope, $http , $compile){
 	$scope.module1 = {
@@ -54,14 +42,19 @@ angular.module('Resumegen', [])
 	};
 	$scope.addModule = function(whichmodule){
 		var newmodel = Math.floor(Math.random()*1000000);
-		var form = $compile(  "<"+whichmodule+"form model='"+whichmodule+".defaults"+newmodel+"'></"+whichmodule+"form>" )( $scope );
-		$('#center').append(form);
+		var moduleform = $compile(  "<"+whichmodule+"form model='"+whichmodule+".defaults"+newmodel+"'></"+whichmodule+"form>" )( $scope );
+		$('#center').append(moduleform);
 
 		var moduletemplate = $compile("<"+whichmodule+" info='"+whichmodule+".defaults"+newmodel+"'></"+whichmodule+">" )( $scope );
 		$('#right').append(moduletemplate);
 
-		console.log($scope.module2.defaults)
-
-		$scope[whichmodule]['defaults'+newmodel] = $.extend(true, {}, $scope[whichmodule].defaults);
+		//Cloning new model to defaults model
+		function cloneObject(obj) {
+		    if (obj === null || typeof obj !== 'object') {return obj;}
+		    var temp = {}; 
+		    for (var key in obj) {temp[key] = cloneObject(obj[key]);}
+		    return temp;
+		}
+		$scope[whichmodule]['defaults'+newmodel] = cloneObject($scope[whichmodule].defaults);
 	}
 }]);
