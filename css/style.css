@@ -8,3 +8,11 @@ body{
 #left .moduleform{
 	display: none;
 }
+input, textarea{
+	display:block;
+	width:90%;
+	margin:10px;
+}
+hr{
+	margin:10px;
+}

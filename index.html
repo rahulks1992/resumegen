@@ -15,11 +15,7 @@
 			<h1>Module One Bio</h1>
 			<module1 info="module1.defaults"></module1>
 			<div class="moduleform">
-				<form>
-					<input type="text" ng-model="module1.defaults.heading">
-					<input type="text" ng-model="module1.defaults.subheading">
-					<input type="text" ng-model="module1.defaults.description">
-				</form>
+				<module1form model="module1.defaults"></module1form>
 			</div>
 			<button class="btn" ng-click="addModule('module1')">Add Module</button>
 		</div>

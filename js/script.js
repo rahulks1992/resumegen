@@ -7,6 +7,15 @@ angular.module('Resumegen', [])
     },
     templateUrl: 'module1.html'
   };
+})
+.directive('module1form', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      field:'=', model:'='
+    },
+    templateUrl: 'module1form.html'
+  };
 })    
 .controller('moduleslist', ['$scope', '$http', '$compile', function( $scope, $http , $compile){
 	$scope.module1 = {
@@ -17,18 +26,13 @@ angular.module('Resumegen', [])
 		}
 	};
 	$scope.addModule = function(whichmodule){
-		var newmodel = Math.floor(Math.random()*1000000), newmodelis;
-		var form = $('#'+ whichmodule).find('.moduleform').clone(true, true);
-		form.find('input').each(function(i,v){
-			var modelis = $(v).attr('ng-model'),
-			newmodelis = 'defaults' + newmodel,
-			finalmodel = modelis.replace('defaults', newmodelis) ;
-			$(v).attr('ng-model', finalmodel);
-		})
-		form.appendTo($('#center'));
+		var newmodel = Math.floor(Math.random()*1000000);
+		var form = $compile(  "<"+whichmodule+"form model='"+whichmodule+".defaults"+newmodel+"'></"+whichmodule+"form>" )( $scope );
+		$('#center').append(form);
 
-		var moduletemplate = $compile(  "<module1 info='module1.defaults'></module1>" )( $scope );
-		console.log(moduletemplate);
-		$('#right').append(moduletemplate)
+		var moduletemplate = $compile("<"+whichmodule+" info='"+whichmodule+".defaults"+newmodel+"'></"+whichmodule+">" )( $scope );
+		$('#right').append(moduletemplate);
+
+		$scope[whichmodule]['defaults'+newmodel] = $.extend(true, {}, $scope[whichmodule].defaults);
 	}
 }]);
