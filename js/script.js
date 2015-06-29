@@ -12,17 +12,44 @@ angular.module('Resumegen', [])
   return {
     restrict: 'E',
     scope: {
-      field:'=', model:'='
+      model:'='
     },
     templateUrl: '/partials/module1form.html'
   };
-})    
+})
+.directive('module2', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      templateno: '=info'
+    },
+    templateUrl: '/partials/module2.html'
+  };
+})
+.directive('module2form', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      model:'='
+    },
+    templateUrl: '/partials/module2form.html'
+  };
+})   
 .controller('moduleslist', ['$scope', '$http', '$compile', function( $scope, $http , $compile){
 	$scope.module1 = {
 		defaults:{
 			heading : "John Doe",
 			subheading : "Assistant Electrical Engineer",
 			description : "Electrical engineers design, develop and maintain electrical control systems and/or components to required specifications, focusing on economy, safety, reliability, quality and sustainability. They design and manufacture electrical equipment for use across many sectors."
+		}
+	};
+	$scope.module2 = {
+		defaults:{
+			company : "Sapient Nitro",
+			subheading : "Front End Engineer",
+			fromdate : "16 June 2014",
+			todate : "24 Dec 2021",
+			description : "This is the first company I worked for and have gained lots of experience. Extensively worked on dynamic websites creating beatiful interface at the same time. Learning curve was exponential here. Will always look back at what I did at this place."
 		}
 	};
 	$scope.addModule = function(whichmodule){
@@ -32,6 +59,8 @@ angular.module('Resumegen', [])
 
 		var moduletemplate = $compile("<"+whichmodule+" info='"+whichmodule+".defaults"+newmodel+"'></"+whichmodule+">" )( $scope );
 		$('#right').append(moduletemplate);
+
+		console.log($scope.module2.defaults)
 
 		$scope[whichmodule]['defaults'+newmodel] = $.extend(true, {}, $scope[whichmodule].defaults);
 	}

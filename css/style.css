@@ -1,5 +1,5 @@
 body{
-	background: #cfadbe;
+	background: #aeaeae;
 }
 .title{
 	text-align: center;
@@ -20,4 +20,7 @@ hr{
 	border: 2px solid black;
 	border-radius: 5px; 
 	padding:10px;
+}
+#left hr{
+	display: none;
 }

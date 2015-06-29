@@ -11,11 +11,42 @@
 <div id="wrapper" class="container-fluid" ng-controller="moduleslist">
 	<h1 class="title">Welcome to resume generator Beta</h1>
 	<div id="left" class="col-md-4">
-		<div id="module1">
-			<h1>Module One Bio</h1>
-			<module1 info="module1.defaults"></module1>
-			<button class="btn" ng-click="addModule('module1')">Add Module</button>
-		</div>
+		<h1>Modules List</h1>
+
+
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <h3>Module One: Bio</h3>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <module1 info="module1.defaults"></module1>
+		<button class="btn" ng-click="addModule('module1')">Add Module</button>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <h3>Module Two: Work</h3>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <module2 info="module2.defaults"></module2>
+		<button class="btn" ng-click="addModule('module2')">Add Module</button>
+      </div>
+    </div>
+  </div>
+</div>
 	</div>
 	<div id="center" class="col-md-4">
 		<h1>Page Builder</h1>
@@ -27,6 +58,7 @@
 
 <script type="text/javascript" src="js/angular.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script> 
 </body>
 
