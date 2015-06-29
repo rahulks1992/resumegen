@@ -5,7 +5,7 @@ angular.module('Resumegen', [])
     scope: {
       templateno: '=info'
     },
-    templateUrl: 'module1.html'
+    templateUrl: '/partials/module1.html'
   };
 })
 .directive('module1form', function() {
@@ -14,7 +14,7 @@ angular.module('Resumegen', [])
     scope: {
       field:'=', model:'='
     },
-    templateUrl: 'module1form.html'
+    templateUrl: '/partials/module1form.html'
   };
 })    
 .controller('moduleslist', ['$scope', '$http', '$compile', function( $scope, $http , $compile){
