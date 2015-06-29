@@ -48,13 +48,7 @@ angular.module('Resumegen', [])
 		var moduletemplate = $compile("<"+whichmodule+" info='"+whichmodule+".defaults"+newmodel+"'></"+whichmodule+">" )( $scope );
 		$('#right').append(moduletemplate);
 
-		//Cloning new model to defaults model
-		function cloneObject(obj) {
-		    if (obj === null || typeof obj !== 'object') {return obj;}
-		    var temp = {}; 
-		    for (var key in obj) {temp[key] = cloneObject(obj[key]);}
-		    return temp;
-		}
-		$scope[whichmodule]['defaults'+newmodel] = cloneObject($scope[whichmodule].defaults);
+		//Cloning new model object for the module to defaults model object
+		$scope[whichmodule]['defaults'+newmodel] = (JSON.parse(JSON.stringify($scope[whichmodule].defaults)));
 	}
 }]);
