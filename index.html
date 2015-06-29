@@ -2,14 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app='Resumegen'>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Coming Soon</title>
+<title>Resume Generator X</title>
+<link href='http://fonts.googleapis.com/css?family=Arapey' rel='stylesheet' type='text/css'>
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 <div id="wrapper" class="container-fluid" ng-controller="moduleslist">
-	<h1 class="title">Welcome to resume generator Beta</h1>
+	<h1 class="title">Welcome to resume generator X</h1>
 	<div id="left" class="col-md-4">
 		<h1>Modules List</h1>
 
@@ -20,14 +21,14 @@
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <h3>Module One: Bio</h3>
+          <div class="moduleHeading">Module One: Bio</div>
         </a>
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
         <module1 info="module1.defaults"></module1>
-		<button class="btn" ng-click="addModule('module1')">Add Module</button>
+		<button class="btn addbtn" ng-click="addModule('module1')">Add Module</button>
       </div>
     </div>
   </div>
@@ -35,14 +36,14 @@
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <h3>Module Two: Work</h3>
+          <div class="moduleHeading">Module Two: Work</div>
         </a>
       </h4>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="panel-body">
         <module2 info="module2.defaults"></module2>
-		<button class="btn" ng-click="addModule('module2')">Add Module</button>
+		<button class="btn addbtn" ng-click="addModule('module2')">Add Module</button>
       </div>
     </div>
   </div>

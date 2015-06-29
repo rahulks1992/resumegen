@@ -1,17 +1,17 @@
 body{
 	background: #aeaeae;
+	font-family: 'Arapey', serif;
+	font-size: 16px;
 }
 .title{
 	text-align: center;
 	font-weight: 700;
 }
-#left .moduleform{
-	display: none;
-}
 input, textarea{
 	display:block;
 	width:90%;
 	margin:12px;
+	padding: 0 8px;
 }
 hr{
 	margin:10px;
@@ -23,4 +23,16 @@ hr{
 }
 #left hr{
 	display: none;
+}
+.dates{
+	display: inline-block;
+}
+input.dates{
+	width: 40%;
+}
+.moduleHeading{
+	font-size: 24px;
+}
+.addbtn{
+	margin-top: 8px;
 }
