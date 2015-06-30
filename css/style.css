@@ -36,3 +36,12 @@ input.dates{
 .addbtn{
 	margin-top: 8px;
 }
+#left, #center{
+	height:50vh;
+	overflow:auto;
+}
+#right{
+	clear:both;
+	height:40vh;
+	overflow:auto;
+}
